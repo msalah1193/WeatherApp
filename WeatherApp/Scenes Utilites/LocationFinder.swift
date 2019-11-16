@@ -10,6 +10,7 @@ import CoreLocation
 protocol LocationFinderDelegate: class {
     func locationUpdatedSuccessfully(location: (lat: Double, long: Double))
     func locationUpdateFailed()
+    func locationPermissionDenied()
 }
 
 class LocationFinder: NSObject {
@@ -38,8 +39,13 @@ class LocationFinder: NSObject {
 
 extension LocationFinder: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
+        switch status {
+        case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
+        case .denied, .notDetermined, .restricted:
+            delegate?.locationPermissionDenied()
+        default:
+            break
         }
     }
     

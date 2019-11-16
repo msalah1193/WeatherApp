@@ -15,7 +15,7 @@ protocol HomeSceneViewModel {
     var items: [CityWeatherViewModel] { get }
     
     func start()
-    func locationUpdated(with location: (lat: Double, long: Double))
+    func locationUpdated(location: (lat: Double, long: Double)?)
 }
 
 class HomeViewModel: HomeSceneViewModel {
@@ -44,13 +44,18 @@ class HomeViewModel: HomeSceneViewModel {
         items = favoriteCities.map { CityWeatherViewModel(from: $0) }
     }
     
-    func locationUpdated(with location: (lat: Double, long: Double)) {
-        let lat = "\(location.lat)"
-        let long = "\(location.long)"
+    func locationUpdated(location: (lat: Double, long: Double)?) {
+        let target: WeatherTarget
         
-        networkManager?.request(WeatherTarget.cityBy(lat: lat, long: long), of: CityWeather.self)
-        { [weak self] result in
-            
+        if let location = location {
+            let lat = "\(location.lat)"
+            let long = "\(location.long)"
+            target = .cityBy(lat: lat, long: long)
+        } else {
+            target = .city(name: "London")
+        }
+        
+        networkManager?.request(target, of: CityWeather.self) { [weak self] result in
             switch result {
             case .success(let cityWeather):
                 self?.addCurrentCityWeather(cityWeather)

@@ -73,10 +73,14 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: LocationFinderDelegate {
     func locationUpdatedSuccessfully(location: (lat: Double, long: Double)) {
-        viewModel?.locationUpdated(with: location)
+        viewModel?.locationUpdated(location: location)
     }
     
     func locationUpdateFailed() {
         showAlert(with: "Location Problem", message: "We Can Update Your Location")
+    }
+    
+    func locationPermissionDenied() {
+        viewModel?.locationUpdated(location: nil)
     }
 }
