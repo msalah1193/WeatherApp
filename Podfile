@@ -7,7 +7,7 @@ target 'WeatherApp' do
   use_frameworks!
 
   # Pods for WeatherApp
-  pod 'Moya', '~> 13.0'
+  pod 'Alamofire'
 
 
   target 'WeatherAppTests' do
