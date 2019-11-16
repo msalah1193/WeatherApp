@@ -9,15 +9,24 @@
 import UIKit
 import CoreLocation
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, ErrorHandling {
     @IBOutlet weak var tableView: UITableView!
+    
+    lazy var searchBar: UISearchBar = {
+        let frame = CGRect(x: 0, y: 0, width: 200, height: 20)
+        return UISearchBar(frame: frame)
+    }()
     
     var viewModel: HomeSceneViewModel?
     var locationFinder: LocationFinder?
+    
 
     //MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.placeholder = "Your placeholder"
+        navigationItem.titleView = searchBar
         
         locationFinder = LocationFinder(delegate: self)
         setupViewModel()
@@ -28,6 +37,7 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    //MARK: - Setup Methods
     func setupViewModel() {
         viewModel?.itemsIsLoaded = { [weak self] items in
             guard items.count > 0 else {
@@ -36,6 +46,10 @@ class HomeViewController: UIViewController {
             }
             
             self?.tableView.reloadData()
+        }
+        
+        viewModel?.networkProblemClosure = { [weak self] error in
+            self?.showAlert(with: "Network Problem", message: error.localizedDescription)
         }
         
         viewModel?.start()
@@ -63,6 +77,6 @@ extension HomeViewController: LocationFinderDelegate {
     }
     
     func locationUpdateFailed() {
-        //TODO: - Handle Location Update Error
+        showAlert(with: "Location Problem", message: "We Can Update Your Location")
     }
 }

@@ -10,6 +10,8 @@ import Foundation
 
 protocol HomeSceneViewModel {
     var itemsIsLoaded: (([CityWeatherViewModel]) -> Void)? { get set }
+    var networkProblemClosure: ((Error) -> Void)? { get set }
+    
     var items: [CityWeatherViewModel] { get }
     
     func start()
@@ -20,6 +22,8 @@ class HomeViewModel: HomeSceneViewModel {
     private var networkManager: NetworkManager?
     
     var itemsIsLoaded: (([CityWeatherViewModel]) -> Void)?
+    var networkProblemClosure: ((Error) -> Void)?
+    
     var items: [CityWeatherViewModel] = [] {
         didSet {
             itemsIsLoaded?(items)
@@ -52,7 +56,7 @@ class HomeViewModel: HomeSceneViewModel {
                 self?.addCurrentCityWeather(cityWeather)
                 
             case .failure(let error):
-                break
+                self?.networkProblemClosure?(error)
             }
         }
     }

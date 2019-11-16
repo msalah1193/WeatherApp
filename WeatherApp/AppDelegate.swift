@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
         initialViewController?.viewModel = HomeViewModel(networkManager: AlamofireNetworkManager())
         
-        window?.rootViewController = initialViewController
+        window?.rootViewController = UINavigationController(rootViewController: initialViewController!)
         window?.makeKeyAndVisible()
         
         return true
