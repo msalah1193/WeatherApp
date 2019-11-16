@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="6jK-o0-C7x">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="BCS-KV-ehF" customClass="HomeViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hJd-xe-b7e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FZH-gG-gp4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FZH-gG-gp4" firstAttribute="top" secondItem="a7P-gm-smp" secondAttribute="top" id="EI1-8R-aTO"/>
+                            <constraint firstItem="a7P-gm-smp" firstAttribute="bottom" secondItem="FZH-gG-gp4" secondAttribute="bottom" id="SE9-Y6-QL5"/>
+                            <constraint firstItem="FZH-gG-gp4" firstAttribute="leading" secondItem="a7P-gm-smp" secondAttribute="leading" id="dGc-0Z-1NZ"/>
+                            <constraint firstItem="a7P-gm-smp" firstAttribute="trailing" secondItem="FZH-gG-gp4" secondAttribute="trailing" id="fqC-oy-2m7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a7P-gm-smp"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="FZH-gG-gp4" id="bjN-Zd-j2a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zw4-eF-xsm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.80000000000001" y="22.938530734632685"/>
+        </scene>
+    </scenes>
+</document>
