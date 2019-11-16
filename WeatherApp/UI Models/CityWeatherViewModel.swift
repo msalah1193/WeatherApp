@@ -17,9 +17,9 @@ struct CityWeatherViewModel {
         temperature = "\(Int(responeModel.main.temp))°"
         cityName = responeModel.name
         
-        let baseURL = Bundle.main.object(forInfoDictionaryKey: "WeatherBaseURL") as? String ?? ""
+        let baseURL = Bundle.main.object(forInfoDictionaryKey: "WeatherAssetsBaseURL") as? String ?? ""
         let iconName = responeModel.weather.first?.icon ?? ""
-        let imageStringURL = "\(baseURL)/img/wn/\(iconName)@2x.png"
+        let imageStringURL = "\(baseURL)\(iconName)@2x.png"
         weatherIconURL = URL(string: imageStringURL)
     }
 }

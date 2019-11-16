@@ -25,29 +25,31 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4C-qM-oLv">
                                 <rect key="frame" x="20" y="20" width="94.5" height="68.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="57"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Cairo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkx-Wx-PPB">
                                 <rect key="frame" x="20" y="92.5" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u1m-NA-5CL">
-                                <rect key="frame" x="224" y="42" width="60" height="50"/>
+                                <rect key="frame" x="182.5" y="16" width="101.5" height="101.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="0As-uW-gBp"/>
-                                    <constraint firstAttribute="height" constant="50" id="Ehw-PH-FmR"/>
+                                    <constraint firstAttribute="width" secondItem="u1m-NA-5CL" secondAttribute="height" id="GHX-zd-e0t"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="u1m-NA-5CL" secondAttribute="trailing" constant="20" id="1oK-cw-Hv6"/>
                             <constraint firstItem="n4C-qM-oLv" firstAttribute="leading" secondItem="b8y-WL-taN" secondAttribute="leading" constant="20" id="3Hc-4n-upp"/>
+                            <constraint firstAttribute="bottom" secondItem="u1m-NA-5CL" secondAttribute="bottom" constant="16" id="5OG-kG-7aj"/>
                             <constraint firstItem="n4C-qM-oLv" firstAttribute="top" secondItem="b8y-WL-taN" secondAttribute="top" constant="20" id="JZN-a5-GBo"/>
+                            <constraint firstItem="u1m-NA-5CL" firstAttribute="leading" secondItem="n4C-qM-oLv" secondAttribute="trailing" constant="68" id="ZLz-cy-XRM"/>
                             <constraint firstItem="xkx-Wx-PPB" firstAttribute="top" secondItem="n4C-qM-oLv" secondAttribute="bottom" constant="4" id="bBV-aL-xQk"/>
+                            <constraint firstItem="u1m-NA-5CL" firstAttribute="top" secondItem="b8y-WL-taN" secondAttribute="top" constant="16" id="c2w-ON-75A"/>
                             <constraint firstItem="xkx-Wx-PPB" firstAttribute="leading" secondItem="n4C-qM-oLv" secondAttribute="leading" id="gUE-Jh-a7M"/>
                             <constraint firstItem="u1m-NA-5CL" firstAttribute="centerY" secondItem="b8y-WL-taN" secondAttribute="centerY" id="hac-fT-8gG"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xkx-Wx-PPB" secondAttribute="bottom" constant="6" id="zRL-3b-xmg"/>
@@ -65,6 +67,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="containerView" destination="b8y-WL-taN" id="GPW-Dg-pyD"/>
                 <outlet property="imageViewWeatherIcon" destination="u1m-NA-5CL" id="tiP-yk-bZO"/>
                 <outlet property="labelCityName" destination="xkx-Wx-PPB" id="AQg-aH-6vG"/>
                 <outlet property="labelTemperatureDegree" destination="n4C-qM-oLv" id="uNx-1Y-WlJ"/>
