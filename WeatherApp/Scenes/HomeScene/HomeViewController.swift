@@ -52,11 +52,7 @@ extension HomeViewController: UITableViewDataSource {
             fatalError()
         }
         
-        cell.labelCityName.text = viewModel?.items[indexPath.row].name
-        
-        let temp = "\(viewModel?.items[indexPath.row].main.temp ?? 0)"
-        cell.labelTemperatureDegree.text = temp
-        
+        cell.item = viewModel?.items[indexPath.row]
         return cell
     }
 }

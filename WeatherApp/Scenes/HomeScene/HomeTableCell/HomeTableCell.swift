@@ -15,6 +15,13 @@ class HomeTableCell: UITableViewCell {
     
     static let id = "HomeTableCell"
     
+    var item: CityWeatherViewModel? {
+        didSet {
+            labelTemperatureDegree.text = item?.temperature
+            labelCityName.text = item?.cityName
+        }
+    }
+    
     //MARK: - setup
     
 }

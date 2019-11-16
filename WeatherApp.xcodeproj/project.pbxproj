@@ -25,6 +25,7 @@
 		ABB458752380271B0046C84E /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458742380271B0046C84E /* LocalStorageManager.swift */; };
 		ABB4587823802E4D0046C84E /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB4587723802E4D0046C84E /* LocationFinder.swift */; };
 		ABB4587A238037F00046C84E /* JSONDecoder+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB45879238037EF0046C84E /* JSONDecoder+Alamofire.swift */; };
+		ABB4587D23803CAE0046C84E /* CityWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB4587C23803CAE0046C84E /* CityWeatherViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		ABB458742380271B0046C84E /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		ABB4587723802E4D0046C84E /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		ABB45879238037EF0046C84E /* JSONDecoder+Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Alamofire.swift"; sourceTree = "<group>"; };
+		ABB4587C23803CAE0046C84E /* CityWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherViewModel.swift; sourceTree = "<group>"; };
 		BB157DA4EF9FEA1714539FA2 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D525A664CBA32654A91CDB /* Pods_WeatherAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5045FEE374B31478D01328 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				ABB45873238026FD0046C84E /* Local Storage */,
 				ABB4585B23800B820046C84E /* Network */,
 				ABB4587023801F310046C84E /* Models */,
+				ABB4587B23803C970046C84E /* UI Models */,
 				ABB4587623802E260046C84E /* Scenes Utilites */,
 				ABB45863238014210046C84E /* Scenes */,
 				AB551658237FFD2200407688 /* LaunchScreen.storyboard */,
@@ -208,6 +211,14 @@
 				ABB4587723802E4D0046C84E /* LocationFinder.swift */,
 			);
 			path = "Scenes Utilites";
+			sourceTree = "<group>";
+		};
+		ABB4587B23803C970046C84E /* UI Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABB4587C23803CAE0046C84E /* CityWeatherViewModel.swift */,
+			);
+			path = "UI Models";
 			sourceTree = "<group>";
 		};
 		D4DB29FD2577662F844DA41D /* Frameworks */ = {
@@ -401,6 +412,7 @@
 			files = (
 				ABB458752380271B0046C84E /* LocalStorageManager.swift in Sources */,
 				ABB4586F23801E930046C84E /* HomeSceneViewModel.swift in Sources */,
+				ABB4587D23803CAE0046C84E /* CityWeatherViewModel.swift in Sources */,
 				ABB4587A238037F00046C84E /* JSONDecoder+Alamofire.swift in Sources */,
 				ABB45866238014520046C84E /* HomeViewController.swift in Sources */,
 				ABB4586023800C110046C84E /* AlamofireNetworkManager.swift in Sources */,

@@ -9,8 +9,8 @@
 import Foundation
 
 protocol HomeSceneViewModel {
-    var itemsIsLoaded: (([CityWeather]) -> Void)? { get set }
-    var items: [CityWeather] { get }
+    var itemsIsLoaded: (([CityWeatherViewModel]) -> Void)? { get set }
+    var items: [CityWeatherViewModel] { get }
     
     func start()
     func locationUpdated(with location: (lat: Double, long: Double))
@@ -19,8 +19,8 @@ protocol HomeSceneViewModel {
 class HomeViewModel: HomeSceneViewModel {
     private var networkManager: NetworkManager?
     
-    var itemsIsLoaded: (([CityWeather]) -> Void)?
-    var items: [CityWeather] = [] {
+    var itemsIsLoaded: (([CityWeatherViewModel]) -> Void)?
+    var items: [CityWeatherViewModel] = [] {
         didSet {
             itemsIsLoaded?(items)
         }
@@ -37,7 +37,7 @@ class HomeViewModel: HomeSceneViewModel {
             return
         }
         
-        items = favoriteCities
+        items = favoriteCities.map { CityWeatherViewModel(from: $0) }
     }
     
     func locationUpdated(with location: (lat: Double, long: Double)) {
@@ -62,6 +62,6 @@ class HomeViewModel: HomeSceneViewModel {
             return
         }
         
-        items = [cityWeather]
+        items = [CityWeatherViewModel(from: cityWeather)]
     }
 }
