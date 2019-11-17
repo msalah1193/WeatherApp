@@ -8,7 +8,12 @@
 
 import UIKit
 
-class CityDetailsViewController: UIViewController {
+enum FavoriteButtonStatus: String {
+    case isIncluded = "Remove From Favorites"
+    case notIncluded = "Add To Favorites"
+}
+
+class CityDetailsViewController: UIViewController, ErrorHandling {
     @IBOutlet weak var labelCityName: UILabel!
     @IBOutlet weak var labelCurrentTemp: UILabel!
     
@@ -17,6 +22,12 @@ class CityDetailsViewController: UIViewController {
     
     //MARK: - Variables
     var viewModel: CityDetailedSceneViewModel?
+    
+    var favBtnTitle: String {
+        let favButtonTitle: FavoriteButtonStatus
+        favButtonTitle = viewModel?.isAddedToFavorites() == true ? .isIncluded : .notIncluded
+        return favButtonTitle.rawValue
+    }
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -37,15 +48,7 @@ class CityDetailsViewController: UIViewController {
     }
     
     func setupNavigationBar() {
-        
-        let favButtonTitle: String
-        if viewModel?.isAddedToFavorites() == true {
-            favButtonTitle = "Remove From Favorites"
-        } else {
-            favButtonTitle = "Add To Favorites"
-        }
-        
-        let favButton = UIBarButtonItem(title: favButtonTitle, style: .plain,
+        let favButton = UIBarButtonItem(title: favBtnTitle, style: .plain,
                                         target: self, action: #selector(favButtonClicked))
         navigationItem.rightBarButtonItem = favButton
     }
@@ -54,6 +57,10 @@ class CityDetailsViewController: UIViewController {
         viewModel?.itemsIsLoaded = { [weak self] detailsModel in
             self?.setupSceneContent(with: detailsModel)
             self?.tableView.reloadData()
+        }
+        
+        viewModel?.networkProblemClosure = { [weak self] error in
+            self?.showAlert(message: error.localizedDescription)
         }
         
         viewModel?.start()
@@ -68,10 +75,12 @@ class CityDetailsViewController: UIViewController {
     
     //MARK: - Actions
     @objc func favButtonClicked() {
-        guard viewModel?.updateFavoriteList() == false else {
+        guard viewModel?.updateFavoriteList() == true else {
+            showAlert(message: "Failed to update favorites. try again later")
             return
         }
         
+        navigationItem.rightBarButtonItem?.title = favBtnTitle
     }
 }
 
