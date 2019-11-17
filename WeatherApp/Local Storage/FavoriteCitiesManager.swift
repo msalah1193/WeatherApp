@@ -9,6 +9,8 @@
 import Foundation
 
 protocol FavoritesManager {
+    var favoriteCities: [Int]? { get }
+    
     func isFavorite(id: Int) -> Bool
     func isHomeCity(with id: Int) -> Bool
     
@@ -18,7 +20,8 @@ protocol FavoritesManager {
 
 class FavoriteCitiesManager: FavoritesManager {
     private let localSotage = LocalStorageContext.manager
-    private var favoriteCities: [Int]? {
+    
+    var favoriteCities: [Int]? {
         return localSotage.retrive(with: .favCities)
     }
     
@@ -29,7 +32,6 @@ class FavoriteCitiesManager: FavoritesManager {
     func isHomeCity(with id: Int) -> Bool {
         return favoriteCities?.first == id
     }
-    
     
     func add(id: Int) -> Bool {
         guard var updatedCitiesIds = favoriteCities else {

@@ -18,6 +18,7 @@ protocol HomeSceneViewModel: SceneViewModel {
 
 class HomeViewModel: HomeSceneViewModel {
     private var networkManager: NetworkManager?
+    private var favoritesManager: FavoritesManager?
     
     var itemsIsLoaded: (([CityWeatherViewModel]) -> Void)?
     var networkProblemClosure: ((Error) -> Void)?
@@ -28,13 +29,17 @@ class HomeViewModel: HomeSceneViewModel {
         }
     }
     
-    init(networkManager: NetworkManager = AlamofireNetworkManager()) {
+    init(networkManager: NetworkManager = AlamofireNetworkManager(),
+         favoritesManager: FavoritesManager = FavoriteCitiesManager()) {
+        
         self.networkManager = networkManager
+        self.favoritesManager = favoritesManager
     }
     
     func start() {
-        let citiesIds: [Int]? = LocalStorageContext.manager.retrive(with: .favCities)
-        guard let favoriteCitiesIds = citiesIds, favoriteCitiesIds.count > 0 else {
+        guard let favoriteCitiesIds = favoritesManager?.favoriteCities,
+            favoriteCitiesIds.count > 0 else {
+            
             items = []
             return
         }
@@ -80,8 +85,7 @@ class HomeViewModel: HomeSceneViewModel {
     }
     
     private func addCurrentCityWeather(_ cityWeather: CityWeather) {
-        guard let id = cityWeather.id,
-            LocalStorageContext.manager.save(data: [id], with: .favCities) else {
+        guard let id = cityWeather.id, favoritesManager?.add(id: id) == true else {
             return
         }
         

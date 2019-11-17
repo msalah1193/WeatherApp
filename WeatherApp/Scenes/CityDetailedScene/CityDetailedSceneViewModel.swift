@@ -20,7 +20,7 @@ protocol CityDetailedSceneViewModel: SceneViewModel {
 
 class CityDetailsViewModel: CityDetailedSceneViewModel {
     private var networkManager: NetworkManager?
-    private var favoritesManager: FavoriteCitiesManager?
+    private var favoritesManager: FavoritesManager?
     private var cityWeather: CityWeatherViewModel
     
     var itemsIsLoaded: ((DetailsViewModel?) -> Void)?

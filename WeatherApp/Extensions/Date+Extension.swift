@@ -9,7 +9,7 @@
 import Foundation
 
 enum DateFormat: String {
-    case detailsDisplay = "EEEE, dd/MM/yyyy, hh a"
+    case detailsDisplay = "EEEE, hh a"
 }
 
 //MARK: - Date Extension
