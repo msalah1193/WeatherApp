@@ -44,7 +44,7 @@ class SearchTableViewController: UITableViewController, ErrorHandling, Loading {
     }
     
     func setupSearchBar() {
-        searchBar.placeholder = "Type Your City Name"
+        searchBar.placeholder = "Type Full City Name"
         searchBar.showsCancelButton = true
         searchBar.delegate = self
         
