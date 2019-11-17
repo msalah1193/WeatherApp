@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController, ErrorHandling {
+class SearchTableViewController: UITableViewController, ErrorHandling, Loading {
     //MARK: - Variables
     let cellId = "SearchTableCell"
     var viewModel: SearchSceneViewModel?
@@ -31,10 +31,14 @@ class SearchTableViewController: UITableViewController, ErrorHandling {
     //MARK: - Setup
     func setupViewModel() {
         viewModel?.itemsIsLoaded = { [weak self] in
+            self?.stopLoading()
+            self?.searchBar.isUserInteractionEnabled = true
             self?.tableView.reloadData()
         }
         
         viewModel?.networkProblemClosure = { [weak self] error in
+            self?.stopLoading()
+            self?.searchBar.isUserInteractionEnabled = true
             self?.showAlert(message: error.localizedDescription)
         }
     }
@@ -86,6 +90,9 @@ extension SearchTableViewController: UISearchBarDelegate {
         }
         
         searchBar.endEditing(true)
+        searchBar.isUserInteractionEnabled = false
+        
+        startLoading()
         viewModel?.search(with: searchText)
     }
 }

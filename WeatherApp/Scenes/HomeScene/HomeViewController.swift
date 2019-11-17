@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class HomeViewController: UIViewController, StoryboardLoneViewController, ErrorHandling {
+class HomeViewController: UIViewController, StoryboardLoneViewController, ErrorHandling, Loading {
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: - Variables
@@ -32,6 +32,8 @@ class HomeViewController: UIViewController, StoryboardLoneViewController, ErrorH
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        startLoading()
         viewModel?.start()
     }
     
@@ -47,6 +49,7 @@ class HomeViewController: UIViewController, StoryboardLoneViewController, ErrorH
     
     func setupViewModel() {
         viewModel?.itemsIsLoaded = { [weak self] items in
+            self?.stopLoading()
             guard items.count > 0 else {
                 self?.locationFinder?.start()
                 return
@@ -56,6 +59,7 @@ class HomeViewController: UIViewController, StoryboardLoneViewController, ErrorH
         }
         
         viewModel?.networkProblemClosure = { [weak self] error in
+            self?.stopLoading()
             self?.showAlert(with: "Network Problem", message: error.localizedDescription)
         }
     }
@@ -87,6 +91,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension HomeViewController: LocationFinderDelegate {
     func locationUpdatedSuccessfully(location: (lat: Double, long: Double)) {
+        startLoading()
         viewModel?.locationUpdated(location: location)
     }
     
@@ -95,6 +100,7 @@ extension HomeViewController: LocationFinderDelegate {
     }
     
     func locationPermissionDenied() {
+        startLoading()
         viewModel?.locationUpdated(location: nil)
     }
 }

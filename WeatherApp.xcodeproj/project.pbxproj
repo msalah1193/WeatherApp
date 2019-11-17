@@ -44,6 +44,7 @@
 		ABB458A9238197AF0046C84E /* StoryboardLoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458A8238197AF0046C84E /* StoryboardLoneViewController.swift */; };
 		ABB458AB238198BB0046C84E /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458AA238198BB0046C84E /* AppRouter.swift */; };
 		ABB458AD23819D2B0046C84E /* SearchSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458AC23819D2B0046C84E /* SearchSceneRouter.swift */; };
+		ABB458AF23819E980046C84E /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458AE23819E980046C84E /* Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		ABB458A8238197AF0046C84E /* StoryboardLoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoneViewController.swift; sourceTree = "<group>"; };
 		ABB458AA238198BB0046C84E /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		ABB458AC23819D2B0046C84E /* SearchSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSceneRouter.swift; sourceTree = "<group>"; };
+		ABB458AE23819E980046C84E /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		BB157DA4EF9FEA1714539FA2 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D525A664CBA32654A91CDB /* Pods_WeatherAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5045FEE374B31478D01328 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				ABB4587F238090650046C84E /* ErrorHandling.swift */,
 				ABB4588D2380A00D0046C84E /* SceneViewModel.swift */,
 				ABB458A8238197AF0046C84E /* StoryboardLoneViewController.swift */,
+				ABB458AE23819E980046C84E /* Loading.swift */,
 			);
 			path = "Scenes Utilites";
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				ABB4587A238037F00046C84E /* JSONDecoder+Alamofire.swift in Sources */,
 				ABB4588C23809FB90046C84E /* CityDetailedSceneViewModel.swift in Sources */,
 				ABB458A7238196F30046C84E /* HomeSceneRouter.swift in Sources */,
+				ABB458AF23819E980046C84E /* Loading.swift in Sources */,
 				ABB45866238014520046C84E /* HomeViewController.swift in Sources */,
 				ABB4586023800C110046C84E /* AlamofireNetworkManager.swift in Sources */,
 				ABB4589A23816E310046C84E /* SearchTableViewController.swift in Sources */,

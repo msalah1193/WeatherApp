@@ -13,7 +13,7 @@ enum FavoriteButtonStatus: String {
     case notIncluded = "Add To Favorites"
 }
 
-class CityDetailsViewController: UIViewController, StoryboardLoneViewController, ErrorHandling {
+class CityDetailsViewController: UIViewController, StoryboardLoneViewController, ErrorHandling, Loading {
     @IBOutlet weak var labelCityName: UILabel!
     @IBOutlet weak var labelCurrentTemp: UILabel!
     
@@ -55,14 +55,17 @@ class CityDetailsViewController: UIViewController, StoryboardLoneViewController,
     
     func setupViewModel() {
         viewModel?.itemsIsLoaded = { [weak self] detailsModel in
+            self?.stopLoading()
             self?.setupSceneContent(with: detailsModel)
             self?.tableView.reloadData()
         }
         
         viewModel?.networkProblemClosure = { [weak self] error in
+            self?.stopLoading()
             self?.showAlert(message: error.localizedDescription)
         }
         
+        startLoading(color: .white)
         viewModel?.start()
     }
     
