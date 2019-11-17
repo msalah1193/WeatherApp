@@ -18,14 +18,6 @@ protocol FavoritesManager {
     func remove(id: Int) -> Bool
 }
 
-enum FavoriteCitiesError: LocalizedError {
-    case limitExceeded
-    
-    var errorDescription: String? {
-        return "You reached the maximum number of favorites cities"
-    }
-}
-
 class FavoriteCitiesManager: FavoritesManager {
     private let localSotage = LocalStorageContext.manager
     

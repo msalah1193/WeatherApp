@@ -22,6 +22,10 @@ extension WeatherTarget: TargetType {
         return Bundle.main.object(forInfoDictionaryKey: "WeatherBaseURL") as? String ?? ""
     }
     
+    var appId: String {
+        return Bundle.main.object(forInfoDictionaryKey: "APPID") as? String ?? ""
+    }
+    
     var path: String {
         switch self {
         case .city, .cityBy:
@@ -37,7 +41,7 @@ extension WeatherTarget: TargetType {
     
     var parameters: [String : Any] {
         var parameters: [String : Any] = [
-            "APPID": "e0d94628327b8a6305002389fba1c69c",
+            "APPID": appId,
             "units": "metric"
         ]
         

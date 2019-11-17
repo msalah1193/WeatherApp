@@ -14,6 +14,7 @@ protocol HomeSceneViewModel: SceneViewModel {
     
     func start()
     func locationUpdated(location: (lat: Double, long: Double)?)
+    func deleteItem(at index: Int) -> Bool
 }
 
 class HomeViewModel: HomeSceneViewModel {
@@ -34,6 +35,15 @@ class HomeViewModel: HomeSceneViewModel {
         
         self.networkManager = networkManager
         self.favoritesManager = favoritesManager
+    }
+    
+    func deleteItem(at index: Int) -> Bool {
+        guard favoritesManager?.remove(id: items[index].id) == true else {
+            return false
+        }
+        
+        items.remove(at: index)
+        return true
     }
     
     func start() {

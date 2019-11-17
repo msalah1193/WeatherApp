@@ -87,6 +87,23 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         router?.navigateToDetails(with: viewModel?.items[indexPath.row])
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row != 0
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else {
+            return
+        }
+        
+        guard viewModel?.deleteItem(at: indexPath.row) == false else {
+            tableView.reloadData()
+            return
+        }
+        
+        showAlert(message: LocalStorageError.removing.localizedDescription)
+    }
 }
 
 extension HomeViewController: LocationFinderDelegate {
@@ -96,7 +113,7 @@ extension HomeViewController: LocationFinderDelegate {
     }
     
     func locationUpdateFailed() {
-        showAlert(with: "Location Problem", message: "We Can Update Your Location")
+        showAlert(message: LocationError.retriving.localizedDescription)
     }
     
     func locationPermissionDenied() {

@@ -8,15 +8,13 @@
 
 import UIKit
 
-class CityDetailsTableViewCell: UITableViewCell {
+class CityDetailsTableViewCell: UITableViewCell, IdentifiedClass {
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelTemp: UILabel!
 
     @IBOutlet weak var imageViewWeatherIcon: UIImageView!
     
     //MARK: - Variables
-    static let id = "CityDetailsTableViewCell"
-    
     var model: DayWeatherDataViewModel? {
         didSet {
             labelDate.text = model?.date

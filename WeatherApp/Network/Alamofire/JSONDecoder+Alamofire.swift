@@ -8,10 +8,6 @@
 
 import Alamofire
 
-enum BackendError: Error {
-    case parsing(reason: String)
-}
-
 extension JSONDecoder {
     func decodeResponse<T: Decodable>(from response: DataResponse<Data>) -> WeatherNetworkResult<T> {
         guard response.error == nil else {
@@ -19,8 +15,7 @@ extension JSONDecoder {
         }
         
         guard let responseData = response.data else {
-            return .failure(BackendError.parsing(reason:
-                "Did not get data in response"))
+            return .failure(BackendError.parsing)
         }
         
         do {

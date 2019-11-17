@@ -46,6 +46,10 @@
 		ABB458AD23819D2B0046C84E /* SearchSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458AC23819D2B0046C84E /* SearchSceneRouter.swift */; };
 		ABB458AF23819E980046C84E /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458AE23819E980046C84E /* Loading.swift */; };
 		ABB458B12381A4980046C84E /* FavoriteCitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458B02381A4980046C84E /* FavoriteCitiesManager.swift */; };
+		ABB458B32381ECEF0046C84E /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458B22381ECEF0046C84E /* AppErrors.swift */; };
+		ABB458B52381F0B50046C84E /* IdentifiedClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458B42381F0B50046C84E /* IdentifiedClass.swift */; };
+		ABB458B72381F1A00046C84E /* IconURLCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458B62381F1A00046C84E /* IconURLCreator.swift */; };
+		ABB458B92381F2BA0046C84E /* TemperatureFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458B82381F2BA0046C84E /* TemperatureFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +107,10 @@
 		ABB458AC23819D2B0046C84E /* SearchSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSceneRouter.swift; sourceTree = "<group>"; };
 		ABB458AE23819E980046C84E /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		ABB458B02381A4980046C84E /* FavoriteCitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCitiesManager.swift; sourceTree = "<group>"; };
+		ABB458B22381ECEF0046C84E /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
+		ABB458B42381F0B50046C84E /* IdentifiedClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiedClass.swift; sourceTree = "<group>"; };
+		ABB458B62381F1A00046C84E /* IconURLCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconURLCreator.swift; sourceTree = "<group>"; };
+		ABB458B82381F2BA0046C84E /* TemperatureFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureFormatter.swift; sourceTree = "<group>"; };
 		BB157DA4EF9FEA1714539FA2 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D525A664CBA32654A91CDB /* Pods_WeatherAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5045FEE374B31478D01328 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,7 +163,7 @@
 				ABB458AA238198BB0046C84E /* AppRouter.swift */,
 				AB55165B237FFD2200407688 /* Info.plist */,
 				ABB4585A23800B3D0046C84E /* Support Files */,
-				ABB45893238158DC0046C84E /* Extensions */,
+				ABB45893238158DC0046C84E /* Helper Files */,
 				ABB45873238026FD0046C84E /* Local Storage */,
 				ABB4585B23800B820046C84E /* Network */,
 				ABB4587023801F310046C84E /* Models */,
@@ -261,6 +269,7 @@
 				ABB4588D2380A00D0046C84E /* SceneViewModel.swift */,
 				ABB458A8238197AF0046C84E /* StoryboardLoneViewController.swift */,
 				ABB458AE23819E980046C84E /* Loading.swift */,
+				ABB458B42381F0B50046C84E /* IdentifiedClass.swift */,
 			);
 			path = "Scenes Utilites";
 			sourceTree = "<group>";
@@ -295,12 +304,15 @@
 			path = CityDetailsTableCell;
 			sourceTree = "<group>";
 		};
-		ABB45893238158DC0046C84E /* Extensions */ = {
+		ABB45893238158DC0046C84E /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
 				ABB458942381590D0046C84E /* Date+Extension.swift */,
+				ABB458B22381ECEF0046C84E /* AppErrors.swift */,
+				ABB458B62381F1A00046C84E /* IconURLCreator.swift */,
+				ABB458B82381F2BA0046C84E /* TemperatureFormatter.swift */,
 			);
-			path = Extensions;
+			path = "Helper Files";
 			sourceTree = "<group>";
 		};
 		ABB4589823816E120046C84E /* SearchScene */ = {
@@ -509,11 +521,13 @@
 				ABB458752380271B0046C84E /* LocalStorageManager.swift in Sources */,
 				ABB4586F23801E930046C84E /* HomeSceneViewModel.swift in Sources */,
 				ABB4587D23803CAE0046C84E /* CityWeatherViewModel.swift in Sources */,
+				ABB458B92381F2BA0046C84E /* TemperatureFormatter.swift in Sources */,
 				ABB458AB238198BB0046C84E /* AppRouter.swift in Sources */,
 				ABB458A9238197AF0046C84E /* StoryboardLoneViewController.swift in Sources */,
 				ABB4589C2381732D0046C84E /* SearchSceneViewModel.swift in Sources */,
 				ABB458952381590D0046C84E /* Date+Extension.swift in Sources */,
 				ABB4587A238037F00046C84E /* JSONDecoder+Alamofire.swift in Sources */,
+				ABB458B32381ECEF0046C84E /* AppErrors.swift in Sources */,
 				ABB4588C23809FB90046C84E /* CityDetailedSceneViewModel.swift in Sources */,
 				ABB458A7238196F30046C84E /* HomeSceneRouter.swift in Sources */,
 				ABB458AF23819E980046C84E /* Loading.swift in Sources */,
@@ -530,7 +544,9 @@
 				ABB458A5238181CF0046C84E /* SearchViewModel.swift in Sources */,
 				ABB45883238097120046C84E /* CityDetailsViewController.swift in Sources */,
 				ABB4587223801F400046C84E /* CityWeather.swift in Sources */,
+				ABB458B52381F0B50046C84E /* IdentifiedClass.swift in Sources */,
 				ABB458A3238181410046C84E /* SearchResponseModel.swift in Sources */,
+				ABB458B72381F1A00046C84E /* IconURLCreator.swift in Sources */,
 				AB551650237FFD2000407688 /* AppDelegate.swift in Sources */,
 				ABB4586C2380157F0046C84E /* HomeTableCell.swift in Sources */,
 				ABB458AD23819D2B0046C84E /* SearchSceneRouter.swift in Sources */,

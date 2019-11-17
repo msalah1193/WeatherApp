@@ -9,15 +9,13 @@
 import UIKit
 import Kingfisher
 
-class HomeTableCell: UITableViewCell {
+class HomeTableCell: UITableViewCell, IdentifiedClass {
     @IBOutlet weak var labelTemperatureDegree: UILabel!
     @IBOutlet weak var labelCityName: UILabel!
     @IBOutlet weak var imageViewWeatherIcon: UIImageView!
     @IBOutlet weak var containerView: UIView!
     
-    //MARK: - Variables
-    static let id = "HomeTableCell"
-    
+    //MARK: - Variables    
     var item: CityWeatherViewModel? {
         didSet {
             labelTemperatureDegree.text = item?.temperature

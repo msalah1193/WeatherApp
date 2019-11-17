@@ -83,7 +83,7 @@ class CityDetailsViewController: UIViewController, StoryboardLoneViewController,
     //MARK: - Actions
     @objc func favButtonClicked() {
         guard viewModel?.updateFavoriteList() == true else {
-            showAlert(message: "Failed to update favorites. try again later")
+            showAlert(message: LocalStorageError.updating.localizedDescription)
             return
         }
         

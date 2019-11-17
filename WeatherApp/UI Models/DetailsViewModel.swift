@@ -30,17 +30,14 @@ struct DayWeatherDataViewModel {
     var weatherIconURL: URL?
     
     init(from listItem: WeatherDetailedList) {
+        let iconName = listItem.weather?.first?.icon
+        weatherIconURL = IconURLCreator.create(with: iconName)
+        
+        let tempDouble = listItem.main?.temp
+        temperature = TemperatureFormatter.formattedTemp(with: tempDouble)
+        
         if let timeInterval = listItem.dt {
             date = Date.formatedDate(from: timeInterval, with: .detailsDisplay)
         }
-        
-        if let tempDouble = listItem.main?.temp {
-            temperature = "\(Int(tempDouble))°"
-        }
-        
-        let baseURL = Bundle.main.object(forInfoDictionaryKey: "WeatherAssetsBaseURL") as? String ?? ""
-        let iconName = listItem.weather?.first?.icon ?? ""
-        let imageStringURL = "\(baseURL)\(iconName)@2x.png"
-        weatherIconURL = URL(string: imageStringURL)
     }
 }

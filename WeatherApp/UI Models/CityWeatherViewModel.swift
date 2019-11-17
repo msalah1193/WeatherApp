@@ -16,31 +16,23 @@ struct CityWeatherViewModel {
     
     init(from responeModel: CityWeather) {
         id = responeModel.id ?? -1
-        cityName = responeModel.name ?? "Unknown"
+        cityName = responeModel.name ?? ""
         
-        let iconName = responeModel.weather?.first?.icon ?? ""
-        setIcon(with: iconName)
+        let iconName = responeModel.weather?.first?.icon
+        weatherIconURL = IconURLCreator.create(with: iconName)
         
-        if let tempDouble = responeModel.main?.temp {
-            temperature = "\(Int(tempDouble))°"
-        }
+        let tempDouble = responeModel.main?.temp
+        temperature = TemperatureFormatter.formattedTemp(with: tempDouble)
     }
     
     init(from weatherListItem: WeatherDetailedList) {
         id = weatherListItem.id ?? -1
-        cityName = weatherListItem.name ?? "Unknown"
+        cityName = weatherListItem.name ?? ""
         
-        let iconName = weatherListItem.weather?.first?.icon ?? ""
-        setIcon(with: iconName)
+        let iconName = weatherListItem.weather?.first?.icon
+        weatherIconURL = IconURLCreator.create(with: iconName)
         
-        if let tempDouble = weatherListItem.main?.temp {
-            temperature = "\(Int(tempDouble))°"
-        }
-    }
-    
-    private mutating func setIcon(with iconName: String) {
-        let baseURL = Bundle.main.object(forInfoDictionaryKey: "WeatherAssetsBaseURL") as? String ?? ""
-        let imageStringURL = "\(baseURL)\(iconName)@2x.png"
-        weatherIconURL = URL(string: imageStringURL)
+        let tempDouble = weatherListItem.main?.temp
+        temperature = TemperatureFormatter.formattedTemp(with: tempDouble)
     }
 }

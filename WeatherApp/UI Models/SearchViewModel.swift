@@ -17,7 +17,7 @@ struct SearchTableCellViewModel {
         
         guard let name = searchListModel.name,
             let countryName = searchListModel.sys?.country else {
-            displayName = "Unknown"
+            displayName = ""
             return
         }
         

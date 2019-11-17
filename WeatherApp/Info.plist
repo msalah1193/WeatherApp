@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>WeatherAssetsBaseURL</key>
-	<string>https://openweathermap.org/img/wn/</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need to access your location to get your city weather </string>
 	<key>NSAppTransportSecurity</key>
@@ -52,5 +50,9 @@
 	</array>
 	<key>WeatherBaseURL</key>
 	<string>http://api.openweathermap.org/data/2.5</string>
+	<key>WeatherAssetsBaseURL</key>
+	<string>https://openweathermap.org/img/wn/</string>
+	<key>APPID</key>
+	<string>e0d94628327b8a6305002389fba1c69c</string>
 </dict>
 </plist>
