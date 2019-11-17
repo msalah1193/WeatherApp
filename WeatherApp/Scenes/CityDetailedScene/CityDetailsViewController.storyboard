@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--City Details View Controller-->
+        <scene sceneID="I3W-Gl-COS">
+            <objects>
+                <viewController storyboardIdentifier="CityDetailsViewController" id="iyy-j0-Pyn" customClass="CityDetailsViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D5F-RU-m2p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b3K-Vn-GKu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31F-PB-igR">
+                                <rect key="frame" x="140.5" y="146" width="94" height="150"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="125"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dZB-kV-O4F">
+                                <rect key="frame" x="105" y="40" width="165" height="90"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5zH-SM-Lw1">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="9U4-dH-xDC"/>
+                                            <constraint firstAttribute="height" constant="90" id="UGA-53-LPD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUk-Ec-dgN">
+                                        <rect key="frame" x="94" y="20" width="71" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hUk-Ec-dgN" firstAttribute="centerY" secondItem="5zH-SM-Lw1" secondAttribute="centerY" id="R3g-kY-1DV"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MDx-GD-gss">
+                                <rect key="frame" x="16" y="312" width="343" height="355"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Vtg-o4-Oy4" firstAttribute="bottom" secondItem="MDx-GD-gss" secondAttribute="bottom" id="4ga-Vf-oca"/>
+                            <constraint firstItem="dZB-kV-O4F" firstAttribute="top" secondItem="Vtg-o4-Oy4" secondAttribute="top" constant="20" id="6fK-UQ-Yy4"/>
+                            <constraint firstItem="Vtg-o4-Oy4" firstAttribute="trailing" secondItem="MDx-GD-gss" secondAttribute="trailing" constant="16" id="8lz-fh-Nh6"/>
+                            <constraint firstItem="b3K-Vn-GKu" firstAttribute="top" secondItem="D5F-RU-m2p" secondAttribute="top" id="Beh-sA-4yZ"/>
+                            <constraint firstItem="MDx-GD-gss" firstAttribute="top" secondItem="31F-PB-igR" secondAttribute="bottom" constant="16" id="FHm-u5-Id0"/>
+                            <constraint firstItem="dZB-kV-O4F" firstAttribute="centerX" secondItem="D5F-RU-m2p" secondAttribute="centerX" id="LzG-7T-g0b"/>
+                            <constraint firstItem="b3K-Vn-GKu" firstAttribute="trailing" secondItem="Vtg-o4-Oy4" secondAttribute="trailing" id="ZFe-VP-RHM"/>
+                            <constraint firstAttribute="bottom" secondItem="b3K-Vn-GKu" secondAttribute="bottom" id="cNB-4N-7Gd"/>
+                            <constraint firstItem="31F-PB-igR" firstAttribute="top" secondItem="dZB-kV-O4F" secondAttribute="bottom" constant="16" id="cdA-Cl-Mpj"/>
+                            <constraint firstItem="MDx-GD-gss" firstAttribute="leading" secondItem="Vtg-o4-Oy4" secondAttribute="leading" constant="16" id="dIa-zw-oHx"/>
+                            <constraint firstItem="b3K-Vn-GKu" firstAttribute="leading" secondItem="Vtg-o4-Oy4" secondAttribute="leading" id="h8K-eD-s5S"/>
+                            <constraint firstItem="31F-PB-igR" firstAttribute="centerX" secondItem="D5F-RU-m2p" secondAttribute="centerX" id="pdP-3q-5wJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vtg-o4-Oy4"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageViewWeatherIcon" destination="5zH-SM-Lw1" id="CXC-uC-HQj"/>
+                        <outlet property="labelCityName" destination="hUk-Ec-dgN" id="7kb-3c-IMH"/>
+                        <outlet property="labelCurrentTemp" destination="31F-PB-igR" id="RbN-NG-JaB"/>
+                        <outlet property="tableView" destination="MDx-GD-gss" id="CWT-3C-zKM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="loE-Vi-uIj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="27.436281859070466"/>
+        </scene>
+    </scenes>
+</document>

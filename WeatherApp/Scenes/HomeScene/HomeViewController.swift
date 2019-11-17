@@ -33,7 +33,9 @@ class HomeViewController: UIViewController, ErrorHandling {
         
         tableView.register(UINib(nibName: HomeTableCell.id, bundle: nil),
                            forCellReuseIdentifier: HomeTableCell.id)
+        tableView.tableFooterView = UIView()
         tableView.rowHeight = 150
+        tableView.delegate = self
         tableView.dataSource = self
     }
     
@@ -56,7 +58,7 @@ class HomeViewController: UIViewController, ErrorHandling {
     }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.items.count ?? 0
     }
@@ -68,6 +70,13 @@ extension HomeViewController: UITableViewDataSource {
         
         cell.item = viewModel?.items[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "CityDetailsViewController", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "CityDetailsViewController") as! CityDetailsViewController
+        initialViewController.viewModel = CityDetailsViewModel(city: viewModel!.items[indexPath.row], networkManager: AlamofireNetworkManager())
+        navigationController?.pushViewController(initialViewController, animated: true)
     }
 }
 

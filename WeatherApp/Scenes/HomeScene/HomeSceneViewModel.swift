@@ -8,13 +8,10 @@
 
 import Foundation
 
-protocol HomeSceneViewModel {
+protocol HomeSceneViewModel: SceneViewModel {
     var itemsIsLoaded: (([CityWeatherViewModel]) -> Void)? { get set }
-    var networkProblemClosure: ((Error) -> Void)? { get set }
-    
     var items: [CityWeatherViewModel] { get }
     
-    func start()
     func locationUpdated(location: (lat: Double, long: Double)?)
 }
 

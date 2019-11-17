@@ -11,6 +11,7 @@ import Foundation
 enum WeatherTarget {
     case city(name: String)
     case cityBy(lat: String, long: String)
+    case cityDetails(id: Int)
 }
 
 extension WeatherTarget: TargetType {
@@ -19,7 +20,12 @@ extension WeatherTarget: TargetType {
     }
     
     var path: String {
-        return "/weather"
+        switch self {
+        case .city, .cityBy:
+            return "/weather"
+        case .cityDetails:
+            return "/forecast"
+        }
     }
     
     var parameters: [String : Any] {
@@ -31,10 +37,13 @@ extension WeatherTarget: TargetType {
         switch self {
         case .city(let name):
             parameters["q"] = name
-            break
+            
         case .cityBy(let lat, let long):
             parameters["lat"] = lat
             parameters["lon"] = long
+            
+        case .cityDetails(let id):
+            parameters["id"] = id
         }
         
         return parameters

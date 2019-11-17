@@ -9,11 +9,13 @@
 import Foundation
 
 struct CityWeatherViewModel {
+    var id: Int
     var temperature: String
     var cityName: String
     var weatherIconURL: URL?
     
     init(from responeModel: CityWeather) {
+        id = responeModel.id
         temperature = "\(Int(responeModel.main.temp))°"
         cityName = responeModel.name
         
