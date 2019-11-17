@@ -40,6 +40,10 @@
 		ABB4589C2381732D0046C84E /* SearchSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB4589B2381732D0046C84E /* SearchSceneViewModel.swift */; };
 		ABB458A3238181410046C84E /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458A2238181410046C84E /* SearchResponseModel.swift */; };
 		ABB458A5238181CF0046C84E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458A4238181CF0046C84E /* SearchViewModel.swift */; };
+		ABB458A7238196F30046C84E /* HomeSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458A6238196F30046C84E /* HomeSceneRouter.swift */; };
+		ABB458A9238197AF0046C84E /* StoryboardLoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458A8238197AF0046C84E /* StoryboardLoneViewController.swift */; };
+		ABB458AB238198BB0046C84E /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458AA238198BB0046C84E /* AppRouter.swift */; };
+		ABB458AD23819D2B0046C84E /* SearchSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB458AC23819D2B0046C84E /* SearchSceneRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,10 @@
 		ABB4589B2381732D0046C84E /* SearchSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSceneViewModel.swift; sourceTree = "<group>"; };
 		ABB458A2238181410046C84E /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
 		ABB458A4238181CF0046C84E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		ABB458A6238196F30046C84E /* HomeSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneRouter.swift; sourceTree = "<group>"; };
+		ABB458A8238197AF0046C84E /* StoryboardLoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoneViewController.swift; sourceTree = "<group>"; };
+		ABB458AA238198BB0046C84E /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		ABB458AC23819D2B0046C84E /* SearchSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSceneRouter.swift; sourceTree = "<group>"; };
 		BB157DA4EF9FEA1714539FA2 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D525A664CBA32654A91CDB /* Pods_WeatherAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5045FEE374B31478D01328 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				AB55164F237FFD2000407688 /* AppDelegate.swift */,
+				ABB458AA238198BB0046C84E /* AppRouter.swift */,
 				AB55165B237FFD2200407688 /* Info.plist */,
 				ABB4585A23800B3D0046C84E /* Support Files */,
 				ABB45893238158DC0046C84E /* Extensions */,
@@ -206,6 +215,7 @@
 				ABB45869238015580046C84E /* HomeTableCell */,
 				ABB45865238014520046C84E /* HomeViewController.swift */,
 				ABB4586E23801E930046C84E /* HomeSceneViewModel.swift */,
+				ABB458A6238196F30046C84E /* HomeSceneRouter.swift */,
 				ABB458672380145F0046C84E /* HomeViewController.storyboard */,
 			);
 			path = HomeScene;
@@ -244,6 +254,7 @@
 				ABB4587723802E4D0046C84E /* LocationFinder.swift */,
 				ABB4587F238090650046C84E /* ErrorHandling.swift */,
 				ABB4588D2380A00D0046C84E /* SceneViewModel.swift */,
+				ABB458A8238197AF0046C84E /* StoryboardLoneViewController.swift */,
 			);
 			path = "Scenes Utilites";
 			sourceTree = "<group>";
@@ -291,6 +302,7 @@
 			children = (
 				ABB4589923816E310046C84E /* SearchTableViewController.swift */,
 				ABB4589B2381732D0046C84E /* SearchSceneViewModel.swift */,
+				ABB458AC23819D2B0046C84E /* SearchSceneRouter.swift */,
 			);
 			path = SearchScene;
 			sourceTree = "<group>";
@@ -491,10 +503,13 @@
 				ABB458752380271B0046C84E /* LocalStorageManager.swift in Sources */,
 				ABB4586F23801E930046C84E /* HomeSceneViewModel.swift in Sources */,
 				ABB4587D23803CAE0046C84E /* CityWeatherViewModel.swift in Sources */,
+				ABB458AB238198BB0046C84E /* AppRouter.swift in Sources */,
+				ABB458A9238197AF0046C84E /* StoryboardLoneViewController.swift in Sources */,
 				ABB4589C2381732D0046C84E /* SearchSceneViewModel.swift in Sources */,
 				ABB458952381590D0046C84E /* Date+Extension.swift in Sources */,
 				ABB4587A238037F00046C84E /* JSONDecoder+Alamofire.swift in Sources */,
 				ABB4588C23809FB90046C84E /* CityDetailedSceneViewModel.swift in Sources */,
+				ABB458A7238196F30046C84E /* HomeSceneRouter.swift in Sources */,
 				ABB45866238014520046C84E /* HomeViewController.swift in Sources */,
 				ABB4586023800C110046C84E /* AlamofireNetworkManager.swift in Sources */,
 				ABB4589A23816E310046C84E /* SearchTableViewController.swift in Sources */,
@@ -510,6 +525,7 @@
 				ABB458A3238181410046C84E /* SearchResponseModel.swift in Sources */,
 				AB551650237FFD2000407688 /* AppDelegate.swift in Sources */,
 				ABB4586C2380157F0046C84E /* HomeTableCell.swift in Sources */,
+				ABB458AD23819D2B0046C84E /* SearchSceneRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

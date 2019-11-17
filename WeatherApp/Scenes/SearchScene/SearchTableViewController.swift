@@ -12,6 +12,7 @@ class SearchTableViewController: UITableViewController, ErrorHandling {
     //MARK: - Variables
     let cellId = "SearchTableCell"
     var viewModel: SearchSceneViewModel?
+    var router: SearchSceneRouter?
     
     lazy var searchBar: UISearchBar = {
         let frame = CGRect(x: 0, y: 0, width: 200, height: 20)
@@ -68,10 +69,8 @@ extension SearchTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "CityDetailsViewController", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "CityDetailsViewController") as! CityDetailsViewController
-        initialViewController.viewModel = CityDetailsViewModel(city: viewModel!.getDetailsModel(for: indexPath.row), networkManager: AlamofireNetworkManager())
-        navigationController?.pushViewController(initialViewController, animated: true)
+        let model = viewModel?.getDetailsModel(for: indexPath.row)
+        router?.navigateToDetails(with: model)
     }
 }
 

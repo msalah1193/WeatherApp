@@ -29,7 +29,7 @@ class SearchViewModel: SearchSceneViewModel {
         }
     }
     
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManager = AlamofireNetworkManager()) {
         self.networkManager = networkManager
     }
     

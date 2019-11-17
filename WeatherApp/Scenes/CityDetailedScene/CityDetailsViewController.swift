@@ -13,7 +13,7 @@ enum FavoriteButtonStatus: String {
     case notIncluded = "Add To Favorites"
 }
 
-class CityDetailsViewController: UIViewController, ErrorHandling {
+class CityDetailsViewController: UIViewController, StoryboardLoneViewController, ErrorHandling {
     @IBOutlet weak var labelCityName: UILabel!
     @IBOutlet weak var labelCurrentTemp: UILabel!
     

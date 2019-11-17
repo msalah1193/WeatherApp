@@ -28,7 +28,7 @@ class HomeViewModel: HomeSceneViewModel {
         }
     }
     
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManager = AlamofireNetworkManager()) {
         self.networkManager = networkManager
     }
     

@@ -30,7 +30,9 @@ class CityDetailsViewModel: CityDetailedSceneViewModel {
         }
     }
     
-    init(city: CityWeatherViewModel, networkManager: NetworkManager) {
+    init(city: CityWeatherViewModel,
+         networkManager: NetworkManager = AlamofireNetworkManager()) {
+        
         self.networkManager = networkManager
         self.cityWeather = city
     }

@@ -9,10 +9,12 @@
 import UIKit
 import CoreLocation
 
-class HomeViewController: UIViewController, ErrorHandling {
+class HomeViewController: UIViewController, StoryboardLoneViewController, ErrorHandling {
     @IBOutlet weak var tableView: UITableView!
     
+    //MARK: - Variables
     var viewModel: HomeSceneViewModel?
+    var router: HomeSceneRouter?
     var locationFinder: LocationFinder?
 
     //MARK: - Life Cycle Methods
@@ -58,10 +60,9 @@ class HomeViewController: UIViewController, ErrorHandling {
         }
     }
     
+    //MARK: - Actions
     @objc func search() {
-        let searchViewController = SearchTableViewController()
-        searchViewController.viewModel = SearchViewModel(networkManager: AlamofireNetworkManager())
-        navigationController?.pushViewController(searchViewController, animated: true)
+        router?.navigateToSearch()
     }
 }
 
@@ -80,10 +81,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "CityDetailsViewController", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "CityDetailsViewController") as! CityDetailsViewController
-        initialViewController.viewModel = CityDetailsViewModel(city: viewModel!.items[indexPath.row], networkManager: AlamofireNetworkManager())
-        navigationController?.pushViewController(initialViewController, animated: true)
+        router?.navigateToDetails(with: viewModel?.items[indexPath.row])
     }
 }
 
