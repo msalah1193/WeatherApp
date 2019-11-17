@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+
 protocol LocationFinderDelegate: class {
     func locationUpdatedSuccessfully(location: (lat: Double, long: Double))
     func locationUpdateFailed()

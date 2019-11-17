@@ -11,14 +11,16 @@ import Foundation
 protocol CityDetailedSceneViewModel: SceneViewModel {
     var itemsIsLoaded: ((DetailsViewModel?) -> Void)? { get set }
     var model: DetailsViewModel? { get set }
+    var isFavoriteCity: Bool { get }
+    var isHomeCity: Bool { get }
     
     func start()
-    func isAddedToFavorites() -> Bool
     func updateFavoriteList() -> Bool
 }
 
 class CityDetailsViewModel: CityDetailedSceneViewModel {
     private var networkManager: NetworkManager?
+    private var favoritesManager: FavoriteCitiesManager?
     private var cityWeather: CityWeatherViewModel
     
     var itemsIsLoaded: ((DetailsViewModel?) -> Void)?
@@ -30,10 +32,20 @@ class CityDetailsViewModel: CityDetailedSceneViewModel {
         }
     }
     
+    var isFavoriteCity: Bool {
+        return favoritesManager?.isFavorite(id: cityWeather.id) ?? false
+    }
+    
+    var isHomeCity: Bool {
+        return favoritesManager?.isHomeCity(with: cityWeather.id) ?? false
+    }
+    
     init(city: CityWeatherViewModel,
-         networkManager: NetworkManager = AlamofireNetworkManager()) {
+         networkManager: NetworkManager = AlamofireNetworkManager(),
+         favoritesManager: FavoritesManager = FavoriteCitiesManager()) {
         
         self.networkManager = networkManager
+        self.favoritesManager = FavoriteCitiesManager()
         self.cityWeather = city
     }
     
@@ -53,26 +65,15 @@ class CityDetailsViewModel: CityDetailedSceneViewModel {
         model = DetailsViewModel(from: responseModel, cityWeather: cityWeather)
     }
     
-    func isAddedToFavorites() -> Bool {
-        guard let cities: [Int] = LocalStorageContext.manager.retrive(with: .favCities) else {
-            return false
-        }
-        
-        let filteredCities = cities.filter { $0 == self.cityWeather.id }
-        return filteredCities.count == 1
-    }
-    
     func updateFavoriteList() -> Bool {
-        guard var cities: [Int] = LocalStorageContext.manager.retrive(with: .favCities) else {
+        guard let favoritesManager = favoritesManager else {
             return false
         }
         
-        guard isAddedToFavorites() else {
-            cities.append(cityWeather.id)
-            return LocalStorageContext.manager.save(data: cities, with: .favCities)
+        guard isFavoriteCity else {
+            return favoritesManager.add(id: cityWeather.id)
         }
         
-        cities.removeAll { $0 == self.cityWeather.id }
-        return LocalStorageContext.manager.save(data: cities, with: .favCities)
+        return favoritesManager.remove(id: cityWeather.id)
     }
 }

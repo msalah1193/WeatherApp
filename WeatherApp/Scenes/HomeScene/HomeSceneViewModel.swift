@@ -34,7 +34,7 @@ class HomeViewModel: HomeSceneViewModel {
     
     func start() {
         let citiesIds: [Int]? = LocalStorageContext.manager.retrive(with: .favCities)
-        guard let favoriteCitiesIds = citiesIds else {
+        guard let favoriteCitiesIds = citiesIds, favoriteCitiesIds.count > 0 else {
             items = []
             return
         }

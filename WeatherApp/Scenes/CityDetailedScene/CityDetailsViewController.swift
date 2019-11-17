@@ -25,7 +25,7 @@ class CityDetailsViewController: UIViewController, StoryboardLoneViewController,
     
     var favBtnTitle: String {
         let favButtonTitle: FavoriteButtonStatus
-        favButtonTitle = viewModel?.isAddedToFavorites() == true ? .isIncluded : .notIncluded
+        favButtonTitle = viewModel?.isFavoriteCity == true ? .isIncluded : .notIncluded
         return favButtonTitle.rawValue
     }
     
@@ -48,6 +48,10 @@ class CityDetailsViewController: UIViewController, StoryboardLoneViewController,
     }
     
     func setupNavigationBar() {
+        guard viewModel?.isHomeCity == false else {
+            return
+        }
+        
         let favButton = UIBarButtonItem(title: favBtnTitle, style: .plain,
                                         target: self, action: #selector(favButtonClicked))
         navigationItem.rightBarButtonItem = favButton
