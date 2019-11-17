@@ -21,8 +21,13 @@ class CityDetailsViewController: UIViewController {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewModel()
         
+        setupViewModel()
+        setupTableView()
+    }
+    
+    //MARK: - Setup
+    func setupTableView() {
         tableView.register(UINib(nibName: CityDetailsTableViewCell.id, bundle: nil),
                            forCellReuseIdentifier: CityDetailsTableViewCell.id)
         tableView.tableFooterView = UIView()
@@ -30,7 +35,6 @@ class CityDetailsViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    //MARK: - Setup
     func setupViewModel() {
         viewModel?.itemsIsLoaded = { [weak self] detailsModel in
             self?.setupSceneContent(with: detailsModel)
@@ -63,6 +67,4 @@ extension CityDetailsViewController: UITableViewDataSource {
         cell.model = viewModel?.model?.daysData[indexPath.row]
         return cell
     }
-    
-    
 }

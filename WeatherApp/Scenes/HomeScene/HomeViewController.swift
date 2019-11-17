@@ -30,16 +30,19 @@ class HomeViewController: UIViewController, ErrorHandling {
         
         locationFinder = LocationFinder(delegate: self)
         setupViewModel()
-        
+        setupTableView()
+    }
+    
+    //MARK: - Setup Methods
+    func setupTableView() {
         tableView.register(UINib(nibName: HomeTableCell.id, bundle: nil),
                            forCellReuseIdentifier: HomeTableCell.id)
-        tableView.tableFooterView = UIView()
+        
         tableView.rowHeight = 150
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    //MARK: - Setup Methods
     func setupViewModel() {
         viewModel?.itemsIsLoaded = { [weak self] items in
             guard items.count > 0 else {
