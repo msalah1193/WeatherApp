@@ -16,7 +16,7 @@ struct DetailsViewModel {
     
     init(from model: CityDetailedWeather, cityWeather: CityWeatherViewModel) {
         temperature = cityWeather.temperature
-        cityName = model.city.name
+        cityName = model.city?.name ?? "Unknown"
         weatherIconURL = cityWeather.weatherIconURL
         
         daysData = model.list.map { DayWeatherDataViewModel(from: $0) }
@@ -25,16 +25,21 @@ struct DetailsViewModel {
 
 //MARK: - DayWeatherDataViewModel
 struct DayWeatherDataViewModel {
-    var date: String
-    var temperature: String
+    var date: String = ""
+    var temperature: String = ""
     var weatherIconURL: URL?
     
     init(from listItem: WeatherDetailedList) {
-        date = Date.formatedDate(from: listItem.dt, with: .detailsDisplay)
-        temperature = "\(Int(listItem.main.temp))°"
+        if let timeInterval = listItem.dt {
+            date = Date.formatedDate(from: timeInterval, with: .detailsDisplay)
+        }
+        
+        if let tempDouble = listItem.main?.temp {
+            temperature = "\(Int(tempDouble))°"
+        }
         
         let baseURL = Bundle.main.object(forInfoDictionaryKey: "WeatherAssetsBaseURL") as? String ?? ""
-        let iconName = listItem.weather.first?.icon ?? ""
+        let iconName = listItem.weather?.first?.icon ?? ""
         let imageStringURL = "\(baseURL)\(iconName)@2x.png"
         weatherIconURL = URL(string: imageStringURL)
     }

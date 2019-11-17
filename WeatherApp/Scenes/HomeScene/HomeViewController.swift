@@ -12,22 +12,17 @@ import CoreLocation
 class HomeViewController: UIViewController, ErrorHandling {
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var searchBar: UISearchBar = {
-        let frame = CGRect(x: 0, y: 0, width: 200, height: 20)
-        return UISearchBar(frame: frame)
-    }()
-    
     var viewModel: HomeSceneViewModel?
     var locationFinder: LocationFinder?
-    
 
     //MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.placeholder = "Your placeholder"
-        navigationItem.titleView = searchBar
-        
+        let searchButton = UIBarButtonItem(title: "Search", style: .plain,
+                                           target: self, action: #selector(search))
+        navigationItem.rightBarButtonItem = searchButton
+
         locationFinder = LocationFinder(delegate: self)
         setupViewModel()
         setupTableView()
@@ -58,6 +53,12 @@ class HomeViewController: UIViewController, ErrorHandling {
         }
         
         viewModel?.start()
+    }
+    
+    @objc func search() {
+        let searchViewController = SearchTableViewController()
+        searchViewController.viewModel = SearchViewModel(networkManager: AlamofireNetworkManager())
+        navigationController?.pushViewController(searchViewController, animated: true)
     }
 }
 

@@ -10,5 +10,4 @@ import Foundation
 
 protocol SceneViewModel {
     var networkProblemClosure: ((Error) -> Void)? { get set }
-    func start()
 }

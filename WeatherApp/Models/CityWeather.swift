@@ -10,25 +10,25 @@ import Foundation
 
 // MARK: - CityWeather
 struct CityWeather: Codable {
-    let coord: Coord
-    let weather: [Weather]
-    let base: String
-    let main: Main
-    let id: Int
-    let name: String
-    let cod: Int
+    let coord: Coord?
+    let weather: [Weather]?
+    let base: String?
+    let main: Main?
+    let id: Int?
+    let name: String?
+    let cod: Int?
 }
 
 // MARK: - Coord
 struct Coord: Codable {
-    let lon, lat: Double
+    let lon, lat: Double?
 }
 
 // MARK: - Main
 struct Main: Codable {
-    let temp: Double
-    let pressure, humidity: Int
-    let tempMin, tempMax: Double
+    let temp: Double?
+    let pressure, humidity: Int?
+    let tempMin, tempMax: Double?
     
     enum CodingKeys: String, CodingKey {
         case temp, pressure, humidity
@@ -39,8 +39,8 @@ struct Main: Codable {
 
 // MARK: - Weather
 struct Weather: Codable {
-    let id: Int
-    let main, weatherDescription, icon: String
+    let id: Int?
+    let main, weatherDescription, icon: String?
     
     enum CodingKeys: String, CodingKey {
         case id, main

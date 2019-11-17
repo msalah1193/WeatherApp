@@ -24,6 +24,7 @@ class CityDetailsViewController: UIViewController {
         
         setupViewModel()
         setupTableView()
+        setupNavigationBar()
     }
     
     //MARK: - Setup
@@ -33,6 +34,20 @@ class CityDetailsViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 44
         tableView.dataSource = self
+    }
+    
+    func setupNavigationBar() {
+        
+        let favButtonTitle: String
+        if viewModel?.isAddedToFavorites() == true {
+            favButtonTitle = "Remove From Favorites"
+        } else {
+            favButtonTitle = "Add To Favorites"
+        }
+        
+        let favButton = UIBarButtonItem(title: favButtonTitle, style: .plain,
+                                        target: self, action: #selector(favButtonClicked))
+        navigationItem.rightBarButtonItem = favButton
     }
     
     func setupViewModel() {
@@ -49,6 +64,11 @@ class CityDetailsViewController: UIViewController {
         labelCurrentTemp.text = model?.temperature
         
         imageViewWeatherIcon.kf.setImage(with: model?.weatherIconURL)
+    }
+    
+    //MARK: - Actions
+    @objc func favButtonClicked() {
+        viewModel?.favoriteActionClicked()
     }
 }
 

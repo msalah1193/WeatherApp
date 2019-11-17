@@ -11,6 +11,10 @@ import Foundation
 protocol CityDetailedSceneViewModel: SceneViewModel {
     var itemsIsLoaded: ((DetailsViewModel?) -> Void)? { get set }
     var model: DetailsViewModel? { get set }
+    
+    func start()
+    func isAddedToFavorites() -> Bool
+    func favoriteActionClicked()
 }
 
 class CityDetailsViewModel: CityDetailedSceneViewModel {
@@ -46,5 +50,18 @@ class CityDetailsViewModel: CityDetailedSceneViewModel {
     
     private func setModel(with responseModel: CityDetailedWeather) {
         model = DetailsViewModel(from: responseModel, cityWeather: cityWeather)
+    }
+    
+    func isAddedToFavorites() -> Bool {
+        guard let cities: [CityWeather] = LocalStorageContext.manager.retrive(with: .favCities) else {
+            return false
+        }
+        
+        let filteredCities = cities.filter { $0.id == self.cityWeather.id }
+        return filteredCities.count == 1
+    }
+    
+    func favoriteActionClicked() {
+        
     }
 }
