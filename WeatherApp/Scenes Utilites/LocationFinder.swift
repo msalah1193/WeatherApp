@@ -42,7 +42,7 @@ extension LocationFinder: CLLocationManagerDelegate {
         switch status {
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
-        case .denied, .notDetermined, .restricted:
+        case .denied, .restricted:
             delegate?.locationPermissionDenied()
         default:
             break

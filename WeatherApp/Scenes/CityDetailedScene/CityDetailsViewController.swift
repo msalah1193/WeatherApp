@@ -93,10 +93,8 @@ extension CityDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView
-            .dequeueReusableCell(withIdentifier: CityDetailsTableViewCell.id,
-                                 for: indexPath) as? CityDetailsTableViewCell else {
-                fatalError()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CityDetailsTableViewCell.id, for: indexPath) as? CityDetailsTableViewCell else {
+            fatalError()
         }
         
         cell.model = viewModel?.model?.daysData[indexPath.row]
