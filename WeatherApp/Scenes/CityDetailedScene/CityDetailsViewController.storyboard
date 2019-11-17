@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dZB-kV-O4F">
-                                <rect key="frame" x="105" y="40" width="165" height="90"/>
+                                <rect key="frame" x="95.5" y="40" width="184" height="90"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5zH-SM-Lw1">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
@@ -37,8 +37,8 @@
                                             <constraint firstAttribute="height" constant="90" id="UGA-53-LPD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUk-Ec-dgN">
-                                        <rect key="frame" x="94" y="20" width="71" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hUk-Ec-dgN">
+                                        <rect key="frame" x="94" y="20" width="90" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -56,12 +56,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dZB-kV-O4F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vtg-o4-Oy4" secondAttribute="leading" constant="8" id="2cW-FV-DE7"/>
                             <constraint firstItem="Vtg-o4-Oy4" firstAttribute="bottom" secondItem="MDx-GD-gss" secondAttribute="bottom" id="4ga-Vf-oca"/>
                             <constraint firstItem="dZB-kV-O4F" firstAttribute="top" secondItem="Vtg-o4-Oy4" secondAttribute="top" constant="20" id="6fK-UQ-Yy4"/>
                             <constraint firstItem="Vtg-o4-Oy4" firstAttribute="trailing" secondItem="MDx-GD-gss" secondAttribute="trailing" constant="16" id="8lz-fh-Nh6"/>
                             <constraint firstItem="b3K-Vn-GKu" firstAttribute="top" secondItem="D5F-RU-m2p" secondAttribute="top" id="Beh-sA-4yZ"/>
                             <constraint firstItem="MDx-GD-gss" firstAttribute="top" secondItem="31F-PB-igR" secondAttribute="bottom" constant="16" id="FHm-u5-Id0"/>
                             <constraint firstItem="dZB-kV-O4F" firstAttribute="centerX" secondItem="D5F-RU-m2p" secondAttribute="centerX" id="LzG-7T-g0b"/>
+                            <constraint firstItem="Vtg-o4-Oy4" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dZB-kV-O4F" secondAttribute="trailing" constant="8" id="ReF-S5-O37"/>
                             <constraint firstItem="b3K-Vn-GKu" firstAttribute="trailing" secondItem="Vtg-o4-Oy4" secondAttribute="trailing" id="ZFe-VP-RHM"/>
                             <constraint firstAttribute="bottom" secondItem="b3K-Vn-GKu" secondAttribute="bottom" id="cNB-4N-7Gd"/>
                             <constraint firstItem="31F-PB-igR" firstAttribute="top" secondItem="dZB-kV-O4F" secondAttribute="bottom" constant="16" id="cdA-Cl-Mpj"/>

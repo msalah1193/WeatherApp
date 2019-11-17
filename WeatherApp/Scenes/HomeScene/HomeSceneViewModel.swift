@@ -33,13 +33,28 @@ class HomeViewModel: HomeSceneViewModel {
     }
     
     func start() {
-        let cities: [CityWeather]? = LocalStorageContext.manager.retrive(with: .favCities)
-        guard let favoriteCities = cities else {
+        let citiesIds: [Int]? = LocalStorageContext.manager.retrive(with: .favCities)
+        guard let favoriteCitiesIds = citiesIds else {
             items = []
             return
         }
         
-        items = favoriteCities.map { CityWeatherViewModel(from: $0) }
+        getSavedCitiesWeather(by: favoriteCitiesIds)
+    }
+    
+    private func getSavedCitiesWeather(by ids: [Int]) {
+        let idsCommaSeprated = ids.reduce("") { $0 + "\($1)," }
+        let target = WeatherTarget.listOfCities(ids: idsCommaSeprated)
+        
+        networkManager?.request(target, of: SearchResponseModel.self) { [weak self] result in
+            switch result {
+            case .success(let responseModel):
+                self?.addSavedItems(responseModel)
+                
+            case .failure(let error):
+                self?.networkProblemClosure?(error)
+            }
+        }
     }
     
     func locationUpdated(location: (lat: Double, long: Double)?) {
@@ -65,10 +80,19 @@ class HomeViewModel: HomeSceneViewModel {
     }
     
     private func addCurrentCityWeather(_ cityWeather: CityWeather) {
-        guard LocalStorageContext.manager.save(data: [cityWeather], with: .favCities) else {
+        guard let id = cityWeather.id,
+            LocalStorageContext.manager.save(data: [id], with: .favCities) else {
             return
         }
         
         items = [CityWeatherViewModel(from: cityWeather)]
+    }
+    
+    private func addSavedItems(_ responseModel: SearchResponseModel) {
+        guard let responseItems = responseModel.list else {
+            return
+        }
+        
+        items = responseItems.map { CityWeatherViewModel(from: $0) }
     }
 }

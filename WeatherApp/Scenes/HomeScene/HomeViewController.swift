@@ -27,6 +27,11 @@ class HomeViewController: UIViewController, ErrorHandling {
         setupViewModel()
         setupTableView()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.start()
+    }
     
     //MARK: - Setup Methods
     func setupTableView() {
@@ -51,8 +56,6 @@ class HomeViewController: UIViewController, ErrorHandling {
         viewModel?.networkProblemClosure = { [weak self] error in
             self?.showAlert(with: "Network Problem", message: error.localizedDescription)
         }
-        
-        viewModel?.start()
     }
     
     @objc func search() {

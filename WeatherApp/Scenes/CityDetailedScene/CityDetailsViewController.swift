@@ -68,7 +68,10 @@ class CityDetailsViewController: UIViewController {
     
     //MARK: - Actions
     @objc func favButtonClicked() {
-        viewModel?.favoriteActionClicked()
+        guard viewModel?.updateFavoriteList() == false else {
+            return
+        }
+        
     }
 }
 

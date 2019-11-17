@@ -14,7 +14,7 @@ protocol CityDetailedSceneViewModel: SceneViewModel {
     
     func start()
     func isAddedToFavorites() -> Bool
-    func favoriteActionClicked()
+    func updateFavoriteList() -> Bool
 }
 
 class CityDetailsViewModel: CityDetailedSceneViewModel {
@@ -36,9 +36,8 @@ class CityDetailsViewModel: CityDetailedSceneViewModel {
     }
     
     func start() {
-        networkManager?.request(WeatherTarget.cityDetails(id: cityWeather.id),
-                                of: CityDetailedWeather.self) { [weak self] result in
-            
+        let target = WeatherTarget.cityDetails(id: cityWeather.id)
+        networkManager?.request(target, of: CityDetailedWeather.self) { [weak self] result in
             switch result {
             case .success(let weatherDetails):
                 self?.setModel(with: weatherDetails)
@@ -53,15 +52,25 @@ class CityDetailsViewModel: CityDetailedSceneViewModel {
     }
     
     func isAddedToFavorites() -> Bool {
-        guard let cities: [CityWeather] = LocalStorageContext.manager.retrive(with: .favCities) else {
+        guard let cities: [Int] = LocalStorageContext.manager.retrive(with: .favCities) else {
             return false
         }
         
-        let filteredCities = cities.filter { $0.id == self.cityWeather.id }
+        let filteredCities = cities.filter { $0 == self.cityWeather.id }
         return filteredCities.count == 1
     }
     
-    func favoriteActionClicked() {
+    func updateFavoriteList() -> Bool {
+        guard var cities: [Int] = LocalStorageContext.manager.retrive(with: .favCities) else {
+            return false
+        }
         
+        guard isAddedToFavorites() else {
+            cities.append(cityWeather.id)
+            return LocalStorageContext.manager.save(data: cities, with: .favCities)
+        }
+        
+        cities.removeAll { $0 == self.cityWeather.id }
+        return LocalStorageContext.manager.save(data: cities, with: .favCities)
     }
 }
