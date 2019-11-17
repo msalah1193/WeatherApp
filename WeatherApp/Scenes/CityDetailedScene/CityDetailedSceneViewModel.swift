@@ -71,9 +71,18 @@ class CityDetailsViewModel: CityDetailedSceneViewModel {
         }
         
         guard isFavoriteCity else {
-            return favoritesManager.add(id: cityWeather.id)
+            return addToFavorites(with: favoritesManager, id: cityWeather.id)
         }
         
         return favoritesManager.remove(id: cityWeather.id)
+    }
+    
+    private func addToFavorites(with manager: FavoritesManager, id: Int) -> Bool {
+        do {
+            return try manager.add(id: cityWeather.id)
+        } catch {
+            networkProblemClosure?(error)
+            return true
+        }
     }
 }

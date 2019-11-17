@@ -14,8 +14,16 @@ protocol FavoritesManager {
     func isFavorite(id: Int) -> Bool
     func isHomeCity(with id: Int) -> Bool
     
-    func add(id: Int) -> Bool
+    func add(id: Int) throws -> Bool
     func remove(id: Int) -> Bool
+}
+
+enum FavoriteCitiesError: LocalizedError {
+    case limitExceeded
+    
+    var errorDescription: String? {
+        return "You reached the maximum number of favorites cities"
+    }
 }
 
 class FavoriteCitiesManager: FavoritesManager {
@@ -33,9 +41,13 @@ class FavoriteCitiesManager: FavoritesManager {
         return favoriteCities?.first == id
     }
     
-    func add(id: Int) -> Bool {
+    func add(id: Int) throws -> Bool {
         guard var updatedCitiesIds = favoriteCities else {
             return localSotage.save(data: [id], with: .favCities)
+        }
+        
+        guard updatedCitiesIds.count < 5 else {
+            throw FavoriteCitiesError.limitExceeded
         }
         
         updatedCitiesIds.append(id)

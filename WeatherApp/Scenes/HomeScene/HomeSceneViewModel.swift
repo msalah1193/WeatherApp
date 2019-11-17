@@ -85,11 +85,16 @@ class HomeViewModel: HomeSceneViewModel {
     }
     
     private func addCurrentCityWeather(_ cityWeather: CityWeather) {
-        guard let id = cityWeather.id, favoritesManager?.add(id: id) == true else {
+        guard let id = cityWeather.id else {
             return
         }
         
-        items = [CityWeatherViewModel(from: cityWeather)]
+        do {
+            let isCityAdded = try favoritesManager?.add(id: id)
+            items = isCityAdded == true ? [CityWeatherViewModel(from: cityWeather)] : []
+        } catch {
+            networkProblemClosure?(error)
+        }
     }
     
     private func addSavedItems(_ responseModel: SearchResponseModel) {
